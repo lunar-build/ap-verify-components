@@ -1,230 +1,82 @@
-## Community
+# AP Verify components
 
-There is a Discord community. https://discord.gg/VYau8hgwrm For quick help, ask questions in the appropriate channel.
+This repository contains:
 
-# Laravel Blade components collection
+- [x] a collection of Laravel Blade components for reuse across the toolbox and verify projects
+- [x] services for API integration with third-party services such as GPTZero
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/dcblogdev/laravel-blade-components.svg?style=flat-square)](https://packagist.org/packages/dcblogdev/laravel-blade-components)
-[![Total Downloads](https://img.shields.io/packagist/dt/dcblogdev/laravel-blade-components.svg?style=flat-square)](https://packagist.org/packages/dcblogdev/laravel-blade-components)
+## Installation in AP projects
 
-Re-usable Laravel Blade components for your projects
+Projects will sync to this repository via Composer specifically pulling the `main` branch.
 
-## Installation
+### Add repository to composer.json
 
-You can install the package via composer:
+```json
+"repositories": [
+	{
+		"type": "vcs",
+		"url": "https://github.com/lunar-build/ap-verify-components"
+	}
+],
+```
+
+### Install via Composer
 
 ```bash
-composer require dcblogdev/laravel-blade-components
+composer require lunar-build/ap-verify-components:dev-main
 ```
 
-## Usage 
+### Updates
 
-## Form components
+To update to the latest version, run:
 
-* [Open](#open)
-* [Input](#form-input)
-* [Textarea](#form-textarea)
-* [Checkbox](#form-checkbox)
-* [Radio](#form-radio)
-* [Select](#form-select)
-* [Button](#form-button)
-
-All form components accept option parameters that such as class='' style=''
-
-> When the method is set to PUT, PATCH or DELETE the @method() will be applied automatically.
-### Open 
-
-Defaults to post method and CSRF token
-
-``` php
-<x-form.open>
-
-</x-form.open>
+```bash
+composer update lunar-build/ap-verify-components
 ```
 
-The method and actions can be passed:
+## Usage
 
-``` php
-<x-form.open method='delete' action='delete-comment'>
+### Blade components
 
-</x-form.open>
+```html
+<x-ap-pie-chart
+	:value="$result->sentence_average_score * 100"
+	caption="Average score for all sentences"
+>
+	{{ $percentage }}
+</x-ap-pie-chart>
 ```
 
-### Form input
+The [LaravelBladeComponentsServiceProvider.php](src/LaravelBladeComponentsServiceProvider.php#L14) file registers the components with the `ap` namespace.
 
-Create an input with a name, the name will be used as the label as long as the label is not provided.
+#### Sass import
+
+To use the component styles ensure the project's `vite.config.js` file has an alias for this package in the vendor folder:
+
+You only need to do this once:
+
+```js
+resolve: {
+	alias: {
+		$apComponents: resolve(
+			"/vendor/lunar-build/ap-verify-components/src/components"
+		),
+	},
+},
+```
+
+then in your main Sass file import the styles:
+
+```scss
+@import '$apComponents/pie-chart/pie-chart';
+```
+
+### Services
+
+You can use the services provided in this package by including the relevant class via its namespace. For example, to use the GPTZero service:
 
 ```php
-<x-form.input name='username'></x-form.input>
+use LunarBuild\ApVerifyComponents\Services\GptZeroService;
+
+GptZeroService::detectGenAI($batch);
 ```
-
-Outputs:
-
-```HTML
-<div>
-    <label for='username'>Username</label>
-    <input type='text' name='username' id='username' value=''>
-</div> 
-```
-
-Use a label
-
-```php
-<x-form.input name='username' label='Username'></x-form.input>
-```
-
-Use an id and a class
-
-```php
-<x-form.input name='username' label='Username' id='username' class='form-input'></x-form.input>
-```
-
-The type is set to test by default, it can be changed
-
-```php
-<x-form.input name='password' type='password'></x-form.input>
-```
-
-Set the input value
-
-```php
-<x-form.input name='username' label='Username'>{{ $username }}</x-form.input>
-```
-
-### Form textarea
-
-```php
-<x-form.textarea name='comments'></x-form.textarea>
-```
-
-Set the rows and columns
-
-```php
-<x-form.textarea name='comments' cols='10' rows='10'></x-form.textarea>
-```
-
-Set the textarea data
-
-```php
-<x-form.textarea name='comments' cols='10' rows='10'>{{ $comments }}</x-form.textarea>
-```
-
-### Form checkbox
-
-A checkbox can also be defined, set the name and value
-
-```php
-<x-form.checkbox name='terms' value='1'></x-form.checkbox>
-```
-
-Check the checkbox by passing its value, as long its a match the checkbox will be checked.
-
-```php
-<x-form.checkbox name='terms' value='1'>1</x-form.checkbox>
-```
-
-or 
-
-```php
-<x-form.checkbox name='terms' value='1'>{{ $terms }}</x-form.checkbox>
-```
-
-### Form radio
-
-A radio can also be defined, set the name, label and value
-
-```php
-<x-form.radio name='result' label='Won' value='Won'></x-form.radio>
-<x-form.radio name='result' label='Lost' value='Lost'></x-form.radio>
-<x-form.radio name='result' label='Draw' value='Draw'></x-form.radio>
-```
-
-Pass a value which will check the matching radio.
-
-```php
-<x-form.radio name='result' label='Won' value='Won'>{{ $result }}</x-form.radio>
-<x-form.radio name='result' label='Lost' value='Lost'>{{ $result }}</x-form.radio>
-<x-form.radio name='result' label='Draw' value='Draw'>{{ $result }}</x-form.radio>
-```
-
-Check the checkbox by passing its value, as long its a match the checkbox will be checked.
-
-```php
-<x-form.checkbox name='terms' value='1'>1</x-form.checkbox>
-```
-
-or 
-
-```php
-<x-form.checkbox name='terms' value='1'>{{ $terms }}</x-form.checkbox>
-```
-
-### Form select
-
-create a select menu set the name and placeholder for the initial option 
-
-```php
-<x-form.select name='types' placeholder='Select'>
-
-</x-form.select>
-```
-
-Leave off the placeholder to have only the select and options that can be selected
-
-```php
-<x-form.select name='types'>
-
-</x-form.select>
-```
-
-In order to set the option an array is needed and is looped over and then a nested component is used.
-
-Pass in the key and value from the array
-
-```php
-@php
-$options = [1 => 'one', 2 => 'two', 3 => 'three'];
-@endphp
-
-<x-form.select name='types' placeholder='Select'>
-    @foreach($options as $key => $value)
-        <x-form.selectoption key='{{ $key }}' value='{{ $value }}'></x-form.selectoption>
-    @endforeach
-</x-form.select>
-```
-
-### Form button
-
-Create a button, defaults to a submit type
-
-```php
-<x-form.button name='submit'>Submit</x-form.button>
-```
-
-Create a button, using only the defaults and a label
-
-```php
-<x-form.button>Submit</x-form.button>
-```
-
-
-### Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-### Security
-
-If you discover any security related issues, please email dave@dcblog.dev instead of using the issue tracker.
-
-## Credits
-
-- [David Carr](https://github.com/dcblogdev)
-- [All Contributors](../../contributors)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
