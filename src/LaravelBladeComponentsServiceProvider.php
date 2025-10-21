@@ -1,6 +1,6 @@
 <?php
 
-namespace Dcblogdev\LaravelBladeComponents;
+namespace LunarBuild\LaravelBladeComponents;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
