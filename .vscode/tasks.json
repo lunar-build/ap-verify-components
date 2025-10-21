@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "npm:dev",
+			"type": "shell",
+			"command": "zsh ./npm-dev.zsh",
+			"presentation": {
+				"panel": "dedicated",
+				"group": "npm"
+			}
+		},
+		{
+			"label": "start-up",
+			"dependsOn": ["npm:dev"],
+			"runOptions": {
+				"runOn": "folderOpen"
+			}
+		}
+	]
+}

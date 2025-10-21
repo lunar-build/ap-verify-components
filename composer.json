@@ -1,17 +1,17 @@
 {
-    "name": "dcblogdev/laravel-blade-components",
+    "name": "lunar-build/ap-verify-components",
     "description": "Laravel Blade components collection",
     "keywords": [
-        "dcblogdev",
+        "lunar-build",
         "blade-components-forms"
     ],
-    "homepage": "https://github.com/dcblogdev/laravel-blade-components",
+    "homepage": "https://github.com/lunar-build/ap-verify-components",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
-            "name": "David Carr",
-            "email": "dave@dcblog.dev",
+            "name": "Lunar Build",
+            "email": "hello@lunar.build",
             "role": "Developer"
         }
     ],
@@ -22,14 +22,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Dcblogdev\\LaravelBladeComponents\\": "src",
-            "Dcblogdev\\LaravelBladeComponents\\Tests\\": "tests"
+            "LunarBuild\\ApVerifyComponents\\": "src",
+            "LunarBuild\\ApVerifyComponents\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Dcblogdev\\LaravelBladeComponents\\LaravelBladeComponentsServiceProvider"
+                "LunarBuild\\LaravelBladeComponents\\LaravelBladeComponentsServiceProvider"
             ]
         }
     },

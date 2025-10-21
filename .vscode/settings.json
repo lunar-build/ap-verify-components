@@ -1,0 +1,52 @@
+{
+    "workbench.editorAssociations": {
+        ".svg": "default"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "never",
+        "source.removeUnusedImports": "explicit"
+    },
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": true,
+    "editor.hover.enabled": true,
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "eslint.validate": ["javascript"],
+    "files.trimTrailingWhitespace": true,
+    "git.autofetch": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "json.schemas": [
+        {
+            "fileMatch": ["patterns/*.json"],
+            "url": "./.vscode/pattern.json"
+        }
+    ],
+    "prettier.useTabs": true,
+    "prettier.singleQuote": true,
+    "[blade]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": null
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}
