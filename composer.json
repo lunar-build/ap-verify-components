@@ -27,7 +27,7 @@
 	"extra": {
 		"laravel": {
 			"providers": [
-				"LunarBuild\\LaravelBladeComponents\\LaravelBladeComponentsServiceProvider"
+				"LunarBuild\\ApVerifyComponents\\LaravelBladeComponentsServiceProvider"
 			]
 		}
 	},

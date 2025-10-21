@@ -1,6 +1,6 @@
 <?php
 
-namespace LunarBuild\LaravelBladeComponents;
+namespace LunarBuild\ApVerifyComponents;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
