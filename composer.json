@@ -1,41 +1,39 @@
 {
-    "name": "lunar-build/ap-verify-components",
-    "description": "Laravel Blade components collection",
-    "keywords": [
-        "lunar-build",
-        "blade-components-forms"
-    ],
-    "homepage": "https://github.com/lunar-build/ap-verify-components",
-    "license": "MIT",
-    "type": "library",
-    "authors": [
-        {
-            "name": "Lunar Build",
-            "email": "hello@lunar.build",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "orchestra/testbench": "^5.0|^6.23|^7.0|^8.0|^9.0.4|^10.0",
-        "pestphp/pest": "^1.23|^2.34.7|^3.0",
-        "pestphp/pest-plugin-laravel": "^2.4|^3.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "LunarBuild\\ApVerifyComponents\\": "src",
-            "LunarBuild\\ApVerifyComponents\\Tests\\": "tests"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "LunarBuild\\LaravelBladeComponents\\LaravelBladeComponentsServiceProvider"
-            ]
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
-    }
+	"name": "lunar-build/ap-verify-components",
+	"description": "Laravel Blade components collection",
+	"keywords": [
+		"lunar-build",
+		"blade-components-forms"
+	],
+	"homepage": "https://github.com/lunar-build/ap-verify-components",
+	"license": "MIT",
+	"type": "library",
+	"authors": [
+		{
+			"name": "Lunar Build",
+			"email": "hello@lunar.build",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"laravel/framework": "^12.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"LunarBuild\\ApVerifyComponents\\": "src",
+			"LunarBuild\\ApVerifyComponents\\Tests\\": "tests"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"LunarBuild\\LaravelBladeComponents\\LaravelBladeComponentsServiceProvider"
+			]
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"pestphp/pest-plugin": true
+		}
+	}
 }
