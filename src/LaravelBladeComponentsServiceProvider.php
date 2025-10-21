@@ -11,6 +11,6 @@ class LaravelBladeComponentsServiceProvider extends ServiceProvider
 	{
 		$this->loadViewsFrom(__DIR__ . '/components', 'ap');
 
-		Blade::component('ap::pie-chart', 'pie-chart', 'ap');
+		Blade::component('ap::pie-chart.pie-chart', 'pie-chart', 'ap');
 	}
 }
