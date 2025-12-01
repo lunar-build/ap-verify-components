@@ -14,6 +14,8 @@ class YtdlpService
 	protected string $error = '';
 	protected bool $successful = false;
 
+	private string $lastCommand = '';
+
 	// construct
 	public function __construct(string $source, bool $useProxy = false)
 	{
@@ -25,6 +27,8 @@ class YtdlpService
 	{
 		$proxy = config('proxy.enabled') && $this->useProxy ? "--proxy " . config('proxy.url') : '';
 		$command = "yt-dlp $proxy $options " . escapeshellarg($this->source);
+
+		$this->lastCommand = $command;
 
 		$process = Process::fromShellCommandline($command);
 		$process->setTimeout(300); // no timeout
@@ -54,5 +58,10 @@ class YtdlpService
 			'output' => $this->output,
 			'error' => $this->error
 		]);
+	}
+
+	public function getLastCommand(): string
+	{
+		return $this->lastCommand;
 	}
 }
